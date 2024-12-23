@@ -1,0 +1,27 @@
+.login-button-area{
+    align-items: center;
+}
+
+.login-form{
+    width: 100%;
+      
+  }
+  .login-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 550px;
+  }
+  .kakaoBt {
+    background-color: transparent;
+    border: none; /* 버튼의 테두리를 제거합니다 */
+    padding: 0; /* 여백을 없앱니다 */
+    display: inline-block; /* 이미지가 버튼 안에서 꽉 차도록 inline-block으로 설정 */  
+  }
+  
+  .kakaoBt > img {
+    width: 100%; /* 이미지의 가로 크기를 100%로 설정 */
+    height: 100%; /* 이미지의 세로 크기를 100%로 설정 */
+    object-fit: cover; /* 이미지를 비율에 맞게 꽉 채우도록 설정 */
+  }
