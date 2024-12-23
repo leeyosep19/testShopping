@@ -47,26 +47,26 @@ export const loginWithGoogle = createAsyncThunk(
 );
 //카카오
 
-export const loginWithKakao = createAsyncThunk(
-  "user/loginWithKakao",
-  async (token, { rejectWithValue }) => {
-    try {
-      const response = await api.post("/auth/kakao", { token });
+// export const loginWithKakao = createAsyncThunk(
+//   "user/loginWithKakao",
+//   async (token, { rejectWithValue }) => {
+//     try {
+//       const response = await api.post("/auth/kakao", { token });
 
-      // 로그인 실패 시
-      if (response.status !== 200) {
-        throw new Error("카카오 로그인 실패");
-      }
+//       // 로그인 실패 시
+//       if (response.status !== 200) {
+//         throw new Error("카카오 로그인 실패");
+//       }
 
-      // 성공 시 사용자 정보 반환
-      return response.data.user;
-    } catch (error) {
-      // 에러 메시지 반환
-      return rejectWithValue(error.error);
-    }
+//       // 성공 시 사용자 정보 반환
+//       return response.data.user;
+//     } catch (error) {
+//       // 에러 메시지 반환
+//       return rejectWithValue(error.error);
+//     }
 
-  }
-);
+//   }
+// );
 
 
 
@@ -207,18 +207,18 @@ const userSlice = createSlice({
       state.loginError = action.payload;
      })
 
-     .addCase(loginWithKakao.pending,(state,action)=>{
-      state.loading = true;
-     })
-     .addCase(loginWithKakao.fulfilled,(state,action)=>{
-      state.loading = false;
-      state.user = action.payload;
-      state.loginError = null;
-     })
-     .addCase(loginWithKakao.rejected,(state,action)=>{
-      state.loading = false;
-      state.loginError = action.payload;
-     });
+    //  .addCase(loginWithKakao.pending,(state,action)=>{
+    //   state.loading = true;
+    //  })
+    //  .addCase(loginWithKakao.fulfilled,(state,action)=>{
+    //   state.loading = false;
+    //   state.user = action.payload;
+    //   state.loginError = null;
+    //  })
+    //  .addCase(loginWithKakao.rejected,(state,action)=>{
+    //   state.loading = false;
+    //   state.loginError = action.payload;
+    //  });
 
 
   },
