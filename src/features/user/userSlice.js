@@ -205,7 +205,7 @@ const userSlice = createSlice({
      .addCase(loginWithGoogle.rejected,(state,action)=>{
       state.loading = false;
       state.loginError = action.payload;
-     })
+     });
 
     //  .addCase(loginWithKakao.pending,(state,action)=>{
     //   state.loading = true;
