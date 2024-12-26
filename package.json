@@ -9,7 +9,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
-    "@react-oauth/google": "^0.8.1",
+    "@react-oauth/google": "^0.8.0",
     "@react-spring/web": "^9.6.1",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.1",
@@ -21,6 +21,8 @@
     "react-bootstrap": "^2.1.1",
     "react-credit-cards-2": "^1.0.3",
     "react-dom": "^18.3.1",
+    "react-google-login": "^5.2.2",
+    "react-icons": "^5.4.0",
     "react-loader-spinner": "^5.3.4",
     "react-paginate": "^8.1.4",
     "react-redux": "^8.0.5",
@@ -32,7 +34,6 @@
     "redux-thunk": "^2.4.2",
     "web-vitals": "^2.1.4"
   },
-  "proxy": "https://reliable-pegasus-85fea0.netlify.app",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

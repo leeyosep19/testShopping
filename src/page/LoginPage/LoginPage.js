@@ -9,7 +9,6 @@ import { loginWithEmail, loginWithGoogle } from "../../features/user/userSlice";
 import { clearErrors } from "../../features/user/userSlice";
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
-
 //npm install @react-oauth/google@latest  구글 설치  참조사이트 https://www.npmjs.com/package/@react-oauth/google
 //google api service: https://console.cloud.google.com/apis/dashboard
 
@@ -37,7 +36,6 @@ const Login = () => {
     //구글 로그인 하기
     dispatch(loginWithGoogle(googleData.credential));
   };
-  
 
   if (user) {
     navigate("/");
@@ -99,8 +97,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
-
-
-

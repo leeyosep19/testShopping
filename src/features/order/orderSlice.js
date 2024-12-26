@@ -41,7 +41,8 @@ export const getOrder = createAsyncThunk(
     try {
       const response = await api.get("/order/me");
       if (response.status !== 200) throw new Error(response.error);
-      return response.data;    
+      return response.data; 
+      
     } catch (error) {
       dispatch(showToastMessage({ message: error.message, status: "error" }));
       return rejectWithValue(error.message);
@@ -59,7 +60,7 @@ export const getOrderList = createAsyncThunk(
       });
 
       if (response.status !== 200) throw new Error(response.error);
-
+      dispatch(showToastMessage("오더 업데이트 완료!", "success"))    
       return response.data; // Assuming response contains data and totalPageNum
     } catch (error) {
       dispatch(showToastMessage({ message: error.message, status: "error" }));
@@ -76,7 +77,7 @@ export const updateOrder = createAsyncThunk(
       if (response.status !== 200) throw new Error(response.error);
 
       dispatch(showToastMessage("오더 업데이트 완료!", "success"));
-      dispatch(getOrderList({ page: 1 }));  // 주문 목록 새로 고침
+    //  dispatch(getOrderList({ page}));  // 주문 목록 새로 고침 
       return response.data;
     } catch (error) {
       dispatch(showToastMessage({ message: error.message, status: "error" }));

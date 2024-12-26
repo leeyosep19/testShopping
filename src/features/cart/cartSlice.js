@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../utils/api";
 import { showToastMessage } from "../common/uiSlice";
 
-
 const initialState = {
   loading: false,
   error: "",
@@ -12,39 +11,33 @@ const initialState = {
   totalPrice: 0,
 };
 
-// 카트에 아이템 추가 시 로그인된 사용자 정보를 함께 전달하는 예시
+// Async thunk actions
 export const addToCart = createAsyncThunk(
   "cart/addToCart",
-  async ({ id, size, token }, { rejectWithValue, dispatch }) => {
-    try {
-      const response = await api.post(
-        "/cart",
-        { productId: id, size, qty: 1 },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`, // 토큰을 헤더에 포함시켜서 서버로 전달
-          },
-        }
+  async ({ id, size }, { rejectWithValue, dispatch }) => {
+    try{
+      const response =await api.post("/cart",{productId:id,size,qty:1});
+      if(response.status !== 200)
+        throw new Error(response.error);
+      dispatch(
+        showToastMessage({
+          message:"카트에 아이템이 추가 되었습니다!!",
+          status: "success",
+        })
       );
-
-      if (response.status !== 200) throw new Error(response.error);
-
-      dispatch(showToastMessage({
-        message: "카트에 아이템이 추가 되었습니다!!",
-        status: "success",
-      }));
-
       return response.data.cartItemQty;
-    } catch (error) {
-      dispatch(showToastMessage({
-        message: "카트에 아이템 추가 실패!!",
-        status: "error",
-      }));
+
+    }catch(error){
+      dispatch(
+        showToastMessage({
+          message:"카트에 아이템 추가 실패!!",
+          status: "error",
+        })
+      );
       return rejectWithValue(error.error);
     }
   }
 );
-
 
 export const getCartList = createAsyncThunk(
   "cart/getCartList",
