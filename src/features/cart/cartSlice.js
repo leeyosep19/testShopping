@@ -23,8 +23,9 @@ export const addToCart = createAsyncThunk(
         showToastMessage({
           message:"카트에 아이템이 추가 되었습니다!!",
           status: "success",
-        })
+        })         
       );
+      dispatch(addToCart({ page: 1 }));
       return response.data.cartItemQty;
 
     }catch(error){
@@ -89,6 +90,7 @@ export const updateQty = createAsyncThunk(
     try {
       const response = await api.put(`/cart/${id}`, { qty: value });
       if (response.status !== 200) throw new Error(response.error);
+      
       return response.data.data; // 업데이트된 카트 데이터 반환
     } catch (error) {
       return rejectWithValue(error.error);
